@@ -3,11 +3,13 @@ import { ThemeProvider } from '@mui/material/styles';
 import ContextProvider from '@/context/contextProvider'
 import theme from '@/styles/theme';
 import TypeSelection from '@/components/TypeSelection';
+import { CssBaseline } from '@mui/material';
 
 export default function Home() {
   return (
     <>
       <ContextProvider>
+        <CssBaseline />
         <ThemeProvider theme={theme}>
           <Head>
             <title>Create Next App</title>
