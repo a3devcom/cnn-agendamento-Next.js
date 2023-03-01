@@ -1,15 +1,25 @@
 import Context from ".";
 import { useState } from "react";
+import dayjs from 'dayjs';
 
 const ContextProvider = ({ children }) => {
   const [typeSelect, setTypeSelect] = useState('');
   const [procedureSelect, setProcedureSelect] = useState('');
+  const [selectedDate, setSelectedDate] = useState();
+  const [professionals, setProfessionals] = useState([]);
+  const [disponibility, setDisponibility] = useState([]);
 
   const contextValue = {
     typeSelect, 
     setTypeSelect,
     procedureSelect,
-    setProcedureSelect
+    setProcedureSelect,
+    selectedDate,
+    setSelectedDate,
+    setProfessionals,
+    professionals,
+    disponibility, 
+    setDisponibility
   };
 
   return (
