@@ -4,6 +4,9 @@ import ContextProvider from '@/context/contextProvider';
 import theme from '@/styles/theme';
 import { CssBaseline } from '@mui/material';
 import '../styles/globals.css';
+import 'dayjs/locale/pt-br';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -17,7 +20,9 @@ function MyApp({ Component, pageProps }) {
       <ContextProvider>
         <CssBaseline />
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
+            <Component {...pageProps} />
+          </LocalizationProvider>
         </ThemeProvider>
       </ContextProvider>
     </>
