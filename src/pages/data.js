@@ -2,8 +2,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { DatePicker } from '@mui/x-date-pickers';
 import TextField from '@mui/material/TextField';
+import { useState } from 'react';
 
 const DateSelection = () => {
+  const [selectedDate, setSelectedDate] = useState();
   return (
     <Box 
       className="flex flex-col items-center justify-center h-screen"
@@ -13,17 +15,11 @@ const DateSelection = () => {
       >
       <h1 className='text-h5 mb-10'>Que dia deseja agendar?</h1>
       <DatePicker
-  renderInput={(props) => (
-    <TextField
-      {...props}
-      label="Select a date"
-      InputLabelProps={{
-        shrink: true,
-      }}
-    />
-  )}
-  disablePast
-/>
+        value={selectedDate}
+        onChange={(date) => setSelectedDate(date)}
+        renderInput={(params) => <TextField {...params} />}
+        disablePast
+      />
         <Button 
           sx={{
             marginTop: '2rem',
