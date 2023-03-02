@@ -8,6 +8,7 @@ const ContextProvider = ({ children }) => {
   const [professionals, setProfessionals] = useState([]);
   const [disponibility, setDisponibility] = useState([]);
   const [appointmentTime, setAppointmentTime] = useState('');
+  const [chosenProfessional, setChosenProfessional] = useState(null);
 
   const contextValue = {
     typeSelect, 
@@ -21,7 +22,9 @@ const ContextProvider = ({ children }) => {
     disponibility, 
     setDisponibility, 
     appointmentTime, 
-    setAppointmentTime
+    setAppointmentTime, 
+    chosenProfessional, 
+    setChosenProfessional
   };
 
   return (

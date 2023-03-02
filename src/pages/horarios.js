@@ -18,7 +18,8 @@ const Horarios = () => {
     setProfessionals, 
     disponibility, 
     setDisponibility, 
-    setAppointmentTime 
+    setAppointmentTime,
+    setChosenProfessional 
   } = useContext(Context);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -58,10 +59,11 @@ const Horarios = () => {
 
   const handleClick = (event) => {
     const { name, pid, hour } = event.currentTarget.attributes;
-    console.log(name.value, pid.value, hour.value);
-    // setAppointmentTime(name.value.horario);
+  
+    setAppointmentTime(hour.value);
+    setChosenProfessional({ nome: name.value, id: pid.value });
 
-    // router.push('/info')
+    router.push('/info')
   };
 
   return(
@@ -81,7 +83,9 @@ const Horarios = () => {
                 <Typography>{professional.nome}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                {professional.disponibility.map((horario) => (
+                { professional.disponibility.length === 0 ?
+                <Typography>Sem horários disponíveis neste dia</Typography> :
+                 professional.disponibility.map((horario) => (
                   <Chip
                     label={`${horario.horaInicio.split(':')[0]}:${horario.horaInicio.split(':')[1]} h`}
                     key={Math.random()}
