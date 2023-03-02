@@ -12,8 +12,17 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Chip from '@mui/material/Chip';
 
 const Horarios = () => {
-  const { selectedDate, professionals, setProfessionals, disponibility, setDisponibility } = useContext(Context);
+  const { 
+    selectedDate,
+    professionals, 
+    setProfessionals, 
+    disponibility, 
+    setDisponibility, 
+    setAppointmentTime 
+  } = useContext(Context);
+
   const [isLoading, setIsLoading] = useState(true);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -35,11 +44,11 @@ const Horarios = () => {
         const { id, nome } = professional;
         const response = await axios.get(`/api/getDisponibility/?id=${id}&date=${dayjs(selectedDate).format('YYYY-MM-DD')}`);
 
-        return { nome, disponibility: response.data };
+        return { id, nome, disponibility: response.data };
       });
 
       const result = await Promise.all(promises);
-      console.log(result);
+
       setDisponibility(result);
       setIsLoading(false);
     };
@@ -47,12 +56,21 @@ const Horarios = () => {
     getDisponibility();
   }, [professionals]);
 
+  const handleClick = (event) => {
+    const { name, pid, hour } = event.currentTarget.attributes;
+    console.log(name.value, pid.value, hour.value);
+    // setAppointmentTime(name.value.horario);
+
+    // router.push('/info')
+  };
+
   return(
     isLoading ? <div className="flex w-full h-screen justify-center items-center">
         <CircularProgress size='5rem'/>
       </div> : 
       <div className="flex flex-col w-full justify-center items-center">
         <div className="flex flex-col w-3/4 h-screen justify-center items-center">
+          <h1 className="text-h5">Escolha o horário da consulta</h1>
           {disponibility.map((professional) => (
             <Accordion sx={{ width: '100%'}} key={professional.nome}>
               <AccordionSummary
@@ -65,9 +83,14 @@ const Horarios = () => {
               <AccordionDetails>
                 {professional.disponibility.map((horario) => (
                   <Chip
-                    label={horario.horaInicio.split(':00')[0]}
+                    label={`${horario.horaInicio.split(':')[0]}:${horario.horaInicio.split(':')[1]} h`}
                     key={Math.random()}
-                    sx={{ marginRight: '0.5rem', marginTop: '0.5rem'}} 
+                    name={professional.nome}
+                    pid={professional.id}
+                    hour={horario.horaInicio}
+                    onClick={handleClick}
+                    sx={{ marginRight: '0.5rem', marginTop: '0.5rem'}}
+                    color="primary" 
                   />
                 ))}
               </AccordionDetails>
