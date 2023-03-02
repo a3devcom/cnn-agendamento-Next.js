@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-  const { id } = req.query;
+  const { id, date } = req.query;
 
   try {
     const config = {
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
       }
     };
 
-    const response = await axios.get(`https://api.clinicanasnuvens.com.br/executor-agenda/disponibilidade?data=2023-03-01&idExecutorAgenda=${id}`, config);
+    const response = await axios.get(`https://api.clinicanasnuvens.com.br/executor-agenda/disponibilidade?data=${date}&idExecutorAgenda=${id}`, config);
 
 
     res.status(200).json(response.data);
