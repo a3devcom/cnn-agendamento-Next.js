@@ -1,6 +1,10 @@
+import Checkout from '../components/forms/info';
+
 const Info = () => {
   return (
-    <div>oi</div>
+    <div>
+      <Checkout/>
+    </div>
   );
 };
 

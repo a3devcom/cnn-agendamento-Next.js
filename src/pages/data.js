@@ -6,6 +6,9 @@ import { useEffect, useContext } from 'react';
 import Context from '@/context';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
+import StepperCO from '@/components/StepperCO';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
 
 const DateSelection = () => {
   const router = useRouter();  
@@ -31,10 +34,19 @@ const DateSelection = () => {
     router.push('/horarios');
   };
 
+  const handleBack = () => {
+    router.push('/');
+  };
+
   return (
+    <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="flex items-center justify-center h-screen">
+    <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >  
     <Box 
-      className="flex flex-col items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center "
     >
+      <StepperCO
+      currentStep={2}
+      />
       <Box
         className="flex flex-col w-3/4"
       >
@@ -45,19 +57,22 @@ const DateSelection = () => {
         renderInput={(params) => <TextField {...params} />}
         disablePast
       />
-        <Button 
-          sx={{
-            marginTop: '2rem',
-            width: '100%',
-          }}
-          variant="contained"
-          onClick={ handleClick }
-        >
-          Continuar
-        </Button>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end',  marginTop: '2rem' }}>
+          <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            sx={{ mt: 3, ml: 1 }}
+          >
+            Next
+          </Button>
+        </Box>
       </Box>
-
     </Box>
+    </Paper>
+    </Container>
   )
 };
 

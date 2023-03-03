@@ -6,6 +6,9 @@ import { useContext } from 'react';
 import Context from '@/context';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
+import StepperCO from '@/components/StepperCO';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
 
 export default function TypeSelection() {
   const { typeSelect, setTypeSelect } = useContext(Context);
@@ -19,6 +22,7 @@ export default function TypeSelection() {
   const handleClick = () => {
     if (typeSelect === 'Consulta') {
       router.push('/data');
+
     } else {
       router.push('/procedimento');
     }
@@ -26,9 +30,14 @@ export default function TypeSelection() {
 
   return (
     <>
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="flex items-center justify-center h-screen">
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
       <Box 
-      className="flex flex-col items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center "
     >
+        <StepperCO
+        currentStep={0}
+        />
         <Box
           className="flex flex-col w-3/4"
         >
@@ -57,8 +66,9 @@ export default function TypeSelection() {
             Continuar
           </Button>
         </Box>
-
       </Box>
+      </Paper>
+      </Container>
     </>
   )
 }

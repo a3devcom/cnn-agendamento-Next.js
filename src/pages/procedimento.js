@@ -5,6 +5,9 @@ import { useContext, useEffect } from 'react';
 import Context from '../context';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
+import StepperCO from '../components/StepperCO';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
 
 const ProcedureSelection = () => {
   const { procedureSelect, setProcedureSelect, typeSelect } = useContext(Context);
@@ -20,6 +23,10 @@ const ProcedureSelection = () => {
     router.push('/data');
   };
 
+  const handleBack = () => {
+    router.push('/');
+  };
+
   const handleChange = ({ target }) => {
     const { value } = target;
     setProcedureSelect(value);
@@ -29,9 +36,14 @@ const ProcedureSelection = () => {
   const exames = ['Mapeamento de retina', 'Biometria ultrassônica'];
 
   return (
+    <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="flex items-center justify-center h-screen">
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
     <Box 
-      className="flex flex-col items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center"
     >
+      <StepperCO
+      currentStep={1}
+      />
       <Box
         className="flex flex-col w-3/4"
       >
@@ -48,20 +60,23 @@ const ProcedureSelection = () => {
           { typeSelect === 'Exame' && exames.map((exame) => <MenuItem key={exame} value={exame}>{exame}</MenuItem>)}      
           
         </TextField>
-        <Button 
-          sx={{
-            marginTop: '2rem',
-            width: '100%',
-          }}
-          disabled={procedureSelect === ''} 
-          variant="contained"
-          onClick={ handleClick}
-        >
-          Continuar
-        </Button>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end',  marginTop: '2rem' }}>
+          <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            onClick={handleClick}
+            sx={{ mt: 3, ml: 1 }}
+            disabled={procedureSelect === ''} 
+          >
+            Next
+          </Button>
+        </Box>
       </Box>
-
     </Box>
+    </Paper>
+    </Container>
   )
 };
 

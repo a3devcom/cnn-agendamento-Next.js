@@ -10,6 +10,9 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Chip from '@mui/material/Chip';
+import StepperCo from '@/components/StepperCO';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
 
 const Horarios = () => {
   const { 
@@ -19,7 +22,7 @@ const Horarios = () => {
     disponibility, 
     setDisponibility, 
     setAppointmentTime,
-    setChosenProfessional 
+    setChosenProfessional,
   } = useContext(Context);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -70,8 +73,13 @@ const Horarios = () => {
     isLoading ? <div className="flex w-full h-screen justify-center items-center">
         <CircularProgress size='5rem'/>
       </div> : 
+      <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="flex items-center justify-center h-screen">
+      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
       <div className="flex flex-col w-full justify-center items-center">
-        <div className="flex flex-col w-3/4 h-screen justify-center items-center">
+        <StepperCo
+        currentStep={3}
+        />
+        <div className="flex flex-col w-3/4 justify-center items-center">
           <h1 className="text-h5">Escolha o horário da consulta</h1>
           {disponibility.map((professional) => (
             <Accordion sx={{ width: '100%'}} key={professional.nome}>
@@ -85,7 +93,7 @@ const Horarios = () => {
               <AccordionDetails>
                 { professional.disponibility.length === 0 ?
                 <Typography>Sem horários disponíveis neste dia</Typography> :
-                 professional.disponibility.map((horario) => (
+                  professional.disponibility.map((horario) => (
                   <Chip
                     label={`${horario.horaInicio.split(':')[0]}:${horario.horaInicio.split(':')[1]} h`}
                     key={Math.random()}
@@ -102,6 +110,8 @@ const Horarios = () => {
           ))}
         </div>
       </div>
+      </Paper>
+      </Container>
   );
 };
 
