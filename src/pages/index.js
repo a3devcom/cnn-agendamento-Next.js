@@ -31,6 +31,9 @@ export default function TypeSelection() {
 
   return (
     <>
+      <Head>
+        <title>Clínica Frei Galvão</title>
+      </Head>
       <Navbar/>
       <Container component="main" maxWidth="sm" sx={{ mb: 4, mt: 4 }} className="flex items-center justify-center h-screen">
       <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >

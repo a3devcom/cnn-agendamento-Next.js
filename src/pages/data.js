@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import StepperCO from '@/components/StepperCO';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
+import Head from 'next/head';
 
 const DateSelection = () => {
   const router = useRouter();  
@@ -40,6 +41,9 @@ const DateSelection = () => {
 
   return (
     <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="flex items-center justify-center h-screen">
+    <Head>
+        <title>Clínica Frei Galvão</title>
+    </Head>
     <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >  
     <Box 
       className="flex flex-col items-center justify-center "
