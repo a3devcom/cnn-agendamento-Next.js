@@ -10,7 +10,7 @@ const StepperCO = ({currentStep}) => {
     activeStep={currentStep}
     >
       <Step>
-        <StepLabel>Tipo de atendimento</StepLabel>
+        <StepLabel>Agendamento</StepLabel>
       </Step>
       <Step>
         <StepLabel>Procedimento</StepLabel>
@@ -22,7 +22,7 @@ const StepperCO = ({currentStep}) => {
         <StepLabel>Horário</StepLabel>
       </Step>
       <Step>
-        <StepLabel>Info Pessoais</StepLabel>
+        <StepLabel>Informações</StepLabel>
       </Step>
     </Stepper>
   )

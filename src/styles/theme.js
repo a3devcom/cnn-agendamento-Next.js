@@ -10,6 +10,9 @@ const theme = createTheme({
       main: '#48bbc1',
     },
   },
+  typography: {
+    fontFamily: 'Space Grotesk, sans-serif',
+  },
 });
 
 export default theme;

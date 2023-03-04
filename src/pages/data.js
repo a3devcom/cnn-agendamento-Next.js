@@ -59,14 +59,17 @@ const DateSelection = () => {
       />
       <Box sx={{ display: 'flex', justifyContent: 'flex-end',  marginTop: '2rem' }}>
           <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-            Back
+            Voltar
           </Button>
           <Button
             variant="contained"
             onClick={handleClick}
-            sx={{ mt: 3, ml: 1 }}
+            sx={{ mt: 3, ml: 1, '&:hover': {
+              backgroundColor: '#48bbc1',
+              color: '#fff',
+            }, }}
           >
-            Next
+            Próximo
           </Button>
         </Box>
       </Box>
