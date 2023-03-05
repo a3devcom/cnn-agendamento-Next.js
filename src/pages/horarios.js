@@ -84,7 +84,14 @@ const Horarios = () => {
         currentStep={3}
         />
         <div className="flex flex-col w-3/4 justify-center items-center">
-          <h1 className="text-h5">Escolha o horário da consulta</h1>
+        <Typography
+          variant="h6" 
+          gutterBottom
+          className='mt-5'
+          sx={{marginBottom: '1rem', fontWeight: 'bold'}}
+        >
+        Selecione o melhor horário para agendarmos a sua consulta:
+        </Typography>
           {disponibility.map((professional) => (
             <Accordion sx={{ width: '100%'}} key={professional.nome}>
               <AccordionSummary

@@ -40,14 +40,13 @@ const payments = [
 export default function Review() {
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
-        Order summary
+      <Typography variant="h5" gutterBottom className='mt-5 font-bold'>
+        Confirme os dados preenchidos: 
       </Typography>
-      <List disablePadding>
+      <List className='flex flex-col'>
         {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
+          <ListItem key={product.name} sx={{ py: 1, px: 0, fontWeight: 800 }}>
             <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
           </ListItem>
         ))}
 

@@ -9,6 +9,7 @@ import StepperCO from '../components/StepperCO';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Head from 'next/head';
+import Typography from '@mui/material/Typography';
 
 const ProcedureSelection = () => {
   const { procedureSelect, setProcedureSelect, typeSelect } = useContext(Context);
@@ -51,7 +52,14 @@ const ProcedureSelection = () => {
       <Box
         className="flex flex-col w-3/4"
       >
-      <h1 className='text-h5 mb-10'>Qual procedimento você deseja?</h1>
+      <Typography
+      variant="h5" 
+      gutterBottom
+      className='mt-5'
+      sx={{marginBottom: '1rem', fontWeight: 'bold'}}
+      >
+        Qual procedimento você deseja realizar?
+      </Typography>
       <TextField
           className="w-full"
           id="outlined-select-currency"

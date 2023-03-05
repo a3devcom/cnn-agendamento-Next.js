@@ -10,6 +10,7 @@ import StepperCO from '@/components/StepperCO';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Head from 'next/head';
+import Typography from '@mui/material/Typography';
 
 const DateSelection = () => {
   const router = useRouter();  
@@ -18,18 +19,6 @@ const DateSelection = () => {
   useEffect(() => {
     setSelectedDate(dayjs());
   }, []);
-
-  // const getAgenda = async () => {
-  //   try {
-  //     const formattedDate = dayjs(selectedDate).format('YYYY-MM-DD');
-  //     const response = await axios.get(`/api/getAgenda?dataInicial=${formattedDate}&dataFinal=${formattedDate}`);
-
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-    
-  // };
 
   const handleClick = () => {
     router.push('/horarios');
@@ -54,7 +43,14 @@ const DateSelection = () => {
       <Box
         className="flex flex-col w-3/4"
       >
-      <h1 className='text-h5 mb-10'>Que dia deseja agendar?</h1>
+      <Typography
+      variant="h5" 
+      gutterBottom
+      className='mt-5'
+      sx={{marginBottom: '1rem', fontWeight: 'bold'}}
+      >
+        Qual dia você deseja agendar?
+      </Typography>
       <DatePicker
         value={selectedDate}
         onChange={(date) => setSelectedDate(dayjs(date).format('YYYY-MM-DD'))}
