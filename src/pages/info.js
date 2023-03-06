@@ -16,7 +16,7 @@ const Info = () => {
     const nameRegex = /^[A-Za-z]+$/;
     const emailRegex = /^\S+@\S+\.\S+$/;
     const cpfRegex = /^\d{11}$/;
-    const telRegex = /^\d{10}$/;
+    const telRegex = /^\d{10}$|^\d{11}$|^(\d{2})\s?(\d{4,5})-?(\d{4})$/;
     const isValidNome = nameRegex.test(nome);
     const isValidSobrenome = nameRegex.test(sobrenome);
     const isValidBirthdate = birthdate && parseInt(birthdate.split('-')[0]) < new Date().getFullYear() && parseInt(birthdate.split('-')[0]) > new Date().getFullYear() - 125;
@@ -24,7 +24,6 @@ const Info = () => {
     const isValidCPF = cpfRegex.test(CPF);
     const isValidTel = telRegex.test(tel);
     const isValidSexo = Boolean(sexo);
-    console.log(isValidBirthdate);
 
     const isAllValid = isValidNome && isValidSobrenome && isValidBirthdate && isValidEmail && isValidTel && isValidSexo && isValidCPF;
 
