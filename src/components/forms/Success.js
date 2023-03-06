@@ -4,10 +4,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import PrintIcon from '@mui/icons-material/Print';
 import HomeIcon from '@mui/icons-material/Home';
+import { useContext } from 'react';
+import Context from '@/context';
+import dayjs from 'dayjs';
 
 import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 
 const Success = () => {
+  const { chosenProfessional, selectedDate, appointmentTime } = useContext(Context);
 
   const handlePrint = () => {
     window.print();
@@ -29,9 +33,9 @@ const Success = () => {
         <Typography variant="subtitle1">
           icon Oftalmologia
           <br/>
-          <MedicalInformationIcon fontSize='small'/> Dr.Flavio David Hirtsch
+          <MedicalInformationIcon fontSize='small'/> Dr. {chosenProfessional.nome}
           <br/>
-          icon Sexta-feira, 29/03/2023, a partir das 14:00
+          icon {dayjs(selectedDate).format('DD-MM-YYYY')}, a partir das { appointmentTime.split(':00')[0] } h
           <br/>
           icon Clínica Frei Galvão
           <br/>
