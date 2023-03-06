@@ -8,6 +8,7 @@ const StepperCO = ({currentStep}) => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down('md'));
 
   return (
+    <div className='w-full'>
       <Stepper 
         activeStep={currentStep}
         orientation={isMobile ? 'vertical' : 'horizontal'} sx={{ maxWidth: '800px', margin: '0 auto' }}
@@ -28,6 +29,7 @@ const StepperCO = ({currentStep}) => {
           <StepLabel>Informações</StepLabel>
         </Step>
       </Stepper>
+    </div>
   )
 }
 

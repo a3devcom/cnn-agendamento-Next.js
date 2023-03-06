@@ -40,7 +40,7 @@ export default function TypeSelection() {
       className="flex flex-col items-center justify-center "
       >
         <StepperCO
-        currentStep={0}
+          currentStep={0}
         />
         <Box
           className="flex flex-col w-3/4 mt-10"
