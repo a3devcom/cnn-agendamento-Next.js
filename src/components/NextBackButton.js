@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import { Button } from '@mui/material';
 
-const NextBackButton = ({ handleClick, handleBack, disabled}) => {
+const NextBackButton = ({ handleClick, handleBack, disabled, isConcludeButton}) => {
   return(
     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
       <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -16,7 +16,7 @@ const NextBackButton = ({ handleClick, handleBack, disabled}) => {
           color: '#fff',
         }, }}
       >
-        Próximo
+        {isConcludeButton ? 'Confirmar' : 'Próximo'}
       </Button>
     </Box>
   );
