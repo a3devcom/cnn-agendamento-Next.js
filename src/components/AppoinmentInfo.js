@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 import MedicalInformationIcon from '@mui/icons-material/MedicalServices';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import ScheduleRoundedIcon from '@mui/icons-material/ScheduleRounded';
+import TodayIcon from '@mui/icons-material/Today';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import MapIcon from '@mui/icons-material/Map';
@@ -15,37 +15,37 @@ export default function AppoinmentInfo() {
   return (
 
           <>
-          <div className='flex flex-row items-center'>
+          <div className='flex flex-row items-center mb-3'>
           <VisibilityIcon fontSize='small' className='mr-2'/>
           <Typography variant="subtitle1">
             Oftalmologia
           </Typography>
           </div>
-          <div className='flex flex-row items-center'>
+          <div className='flex flex-row items-center mb-3'>
           <MedicalInformationIcon fontSize='small' className='mr-2'/>
           <Typography variant="subtitle1">
             Dr. {chosenProfessional.nome}
           </Typography>
           </div>
-          <div className='flex flex-row items-center'>
-          <ScheduleRoundedIcon fontSize='small' className='mr-2'/>
+          <div className='flex flex-row items-center mb-3'>
+          <TodayIcon fontSize='small' className='mr-2'/>
           <Typography variant="subtitle1">
           {dayjs(selectedDate).format('DD/MM/YYYY')}, às { appointmentTime.split(':00')[0] } h
           </Typography>
           </div>
-          <div className='flex flex-row items-center'>
+          <div className='flex flex-row items-center mb-3'>
           <LocationOnIcon fontSize='small' className='mr-2'/>
           <Typography variant="subtitle1">
           Clínica Frei Galvão
           </Typography>
           </div>
-          <div className='flex flex-row items-center'>
+          <div className='flex flex-row items-center mb-3'>
           <MapIcon fontSize='small' className='mr-2'/>
           <Typography variant="subtitle1">
           Rua Sete de Setembro, 198 - Centro - CEP 12500-330 - Guaratinguetá - SP
           </Typography>
           </div>
-          <div className='flex flex-row items-center'>
+          <div className='flex flex-row items-center mb-3'>
           <PaidIcon fontSize='small' className='mr-2'/>
           <Typography variant="subtitle1">
           R$ 230,00

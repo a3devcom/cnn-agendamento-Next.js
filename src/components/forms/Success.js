@@ -5,10 +5,12 @@ import Typography from '@mui/material/Typography';
 import PrintIcon from '@mui/icons-material/Print';
 import HomeIcon from '@mui/icons-material/Home';
 import AppoinmentInfo from '../AppoinmentInfo';
-
+import { useRouter } from 'next/router';
 
 
 const Success = () => {
+  const router = useRouter();
+  
   const handlePrint = () => {
     window.print();
   };
@@ -38,8 +40,9 @@ const Success = () => {
             Dúvidas ou cancelamentos?
           </Typography>
           <Typography variant="subtitle1">
-            Caso tenha alguma dúvida ou queira cancelar agendamento, entre em contato com a clínicpelo telefone (11) 3333-3333 ou pelo Whatsap(11) 99999-9999.
+            Caso tenha alguma dúvida ou queira cancelar agendamento, entre em contato com a clínica pelo telefone (12) 3133-7624 ou (12) 3122 4567.
           </Typography>
+          <div className="flex flex-row items-center algin-center">
           <Button 
             sx={{
             backgroundColor: '#2880bb',
@@ -47,6 +50,7 @@ const Success = () => {
             backgroundColor: '#48bbc1',
             color: '#fff',
           },
+          width: '40%',
           }}
             className='mt-5'
             variant="contained"
@@ -62,14 +66,16 @@ const Success = () => {
             backgroundColor: '#48bbc1',
             color: '#fff',
           },
+          width: '40%',
           }}
             className='mt-5 ml-5'
             variant="contained"
             startIcon={<HomeIcon />}
             onClick={ handleHome }
           >
-            Voltar para o Início
-          </Button>       
+            Início
+          </Button> 
+          </div>      
     </React.Fragment>
   );
 }
