@@ -16,6 +16,7 @@ import Paper from '@mui/material/Paper';
 import Head from 'next/head';
 import { Button } from "@mui/material";
 import Copyright from '@/components/Copyright';
+import PaperContainer from '../components/PaperContainer'
 
 const Horarios = () => {
   const { 
@@ -80,11 +81,11 @@ const Horarios = () => {
     isLoading ? <div className="flex w-full h-screen justify-center items-center">
         <CircularProgress size='5rem'/>
       </div> : 
-      <Container component="main" maxWidth="sm" sx={{ mb: 4, mt: 4, display: 'flex', flexDirection: 'column' }} className="flex items-center justify-center h-screen">
+      <>
       <Head>
         <title>Clínica Frei Galvão</title>
       </Head>
-      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
+      <PaperContainer>
       <div className="flex flex-col w-full justify-center items-center">
         <StepperCo
         currentStep={3}
@@ -130,9 +131,9 @@ const Horarios = () => {
             Voltar
         </Button>
       </div>
-      </Paper>
+      </PaperContainer>
       <Copyright />
-      </Container>
+      </>
   );
 };
 

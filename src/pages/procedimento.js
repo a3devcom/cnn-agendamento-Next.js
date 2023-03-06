@@ -11,6 +11,7 @@ import Paper from '@mui/material/Paper';
 import Head from 'next/head';
 import Typography from '@mui/material/Typography';
 import Copyright from '@/components/Copyright';
+import PaperContainer from '../components/PaperContainer'
 
 const ProcedureSelection = () => {
   const { procedureSelect, setProcedureSelect, typeSelect } = useContext(Context);
@@ -39,11 +40,11 @@ const ProcedureSelection = () => {
   const exames = ['Mapeamento de retina', 'Biometria ultrassônica'];
 
   return (
-    <Container component="main" maxWidth="sm" sx={{ mb: 4, mt: 4, display: 'flex', flexDirection: 'column' }} className="flex items-center justify-center h-screen">
+    <>
       <Head>
         <title>Clínica Frei Galvão</title>
       </Head>
-      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
+    <PaperContainer>  
     <Box 
       className="flex flex-col items-center justify-center"
     >
@@ -91,9 +92,9 @@ const ProcedureSelection = () => {
         </Box>
       </Box>
     </Box>
-    </Paper>
+    </PaperContainer>        
     <Copyright />
-    </Container>
+    </>
   )
 };
 

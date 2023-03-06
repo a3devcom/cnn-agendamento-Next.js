@@ -16,6 +16,7 @@ export default function HealthCare() {
     { title: 'NotreDame' },
     { title: "Sul América" },
   ];
+  
   return (
     <Box sx={{ height: '75%', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', flexDirection: 'column' }}>
         <Typography variant="h4" gutterBottom className='mt-5' sx={{ fontWeight: 'bold'}}>

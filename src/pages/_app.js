@@ -7,6 +7,7 @@ import '../styles/globals.css';
 import 'dayjs/locale/pt-br';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import PaperContainer from '../components/PaperContainer'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -21,7 +22,7 @@ function MyApp({ Component, pageProps }) {
         <CssBaseline />
         <ThemeProvider theme={theme}>
           <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-            <Component {...pageProps} />
+              <Component {...pageProps} />
           </LocalizationProvider>
         </ThemeProvider>
       </ContextProvider>

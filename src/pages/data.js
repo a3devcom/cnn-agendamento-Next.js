@@ -7,15 +7,15 @@ import Context from '@/context';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/router';
 import StepperCO from '@/components/StepperCO';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
 import Head from 'next/head';
 import Typography from '@mui/material/Typography';
 import Copyright from '@/components/Copyright';
+import PaperContainer from '../components/PaperContainer'
+import NextBackButton from '@/components/NextBackButton';
 
 const DateSelection = () => {
   const router = useRouter();  
-  const { selectedDate, setSelectedDate } = useContext(Context);
+  const { selectedDate, setSelectedDate, typeSelect } = useContext(Context);
 
   useEffect(() => {
     setSelectedDate(dayjs());
@@ -26,15 +26,20 @@ const DateSelection = () => {
   };
 
   const handleBack = () => {
-    router.push('/');
+    if(typeSelect === 'Consulta') {
+      router.push('/');
+    } else {
+      router.push('/procedimento');
+    }
+    
   };
 
   return (
-    <Container component="main" maxWidth="sm" sx={{ mb: 4, mt: 4, display: 'flex', flexDirection: 'column' }} className="flex items-center justify-center h-screen">
+    <>
     <Head>
         <title>Clínica Frei Galvão</title>
     </Head>
-    <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >  
+    <PaperContainer>
     <Box 
       className="flex flex-col items-center justify-center "
     >
@@ -58,26 +63,12 @@ const DateSelection = () => {
         renderInput={(params) => <TextField {...params} />}
         disablePast
       />
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end',  marginTop: '2rem' }}>
-          <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-            Voltar
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handleClick}
-            sx={{ mt: 3, ml: 1, '&:hover': {
-              backgroundColor: '#48bbc1',
-              color: '#fff',
-            }, }}
-          >
-            Próximo
-          </Button>
-        </Box>
+      <NextBackButton handleClick={ handleClick } handleBack={ handleBack }/>
       </Box>
     </Box>
-    </Paper>
+    </PaperContainer>
     <Copyright />
-    </Container>
+    </>
   )
 };
 

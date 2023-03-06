@@ -7,10 +7,9 @@ import Context from '@/context';
 import Button from '@mui/material/Button';
 import { useRouter } from 'next/router';
 import StepperCO from '@/components/StepperCO';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
 import Navbar from '@/components/Navbar';
 import Copyright from '@/components/Copyright';
+import PaperContainer from '../components/PaperContainer'
 
 export default function TypeSelection() {
   const { typeSelect, setTypeSelect } = useContext(Context);
@@ -36,8 +35,7 @@ export default function TypeSelection() {
         <title>Clínica Frei Galvão</title>
       </Head>
       <Navbar/>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4, mt: 4, display: 'flex', flexDirection: 'column' }} className="flex items-center justify-center h-screen">
-      <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
+      <PaperContainer>      
       <Box 
       className="flex flex-col items-center justify-center "
       >
@@ -74,13 +72,12 @@ export default function TypeSelection() {
             onClick={ handleClick }
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
-            Continuar
+            Próximo
           </Button>
         </Box>
       </Box>
-      </Paper>
+      </PaperContainer>
       <Copyright />
-      </Container>
     </>
   )
 }
