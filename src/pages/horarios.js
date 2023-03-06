@@ -88,7 +88,7 @@ const Horarios = () => {
       <PaperContainer>
       <div className="flex flex-col w-full justify-center items-center">
         <StepperCo
-        currentStep={3}
+          currentStep={3}
         />
         <div className="flex flex-col w-3/4 justify-center items-center">
         <Typography
@@ -106,7 +106,7 @@ const Horarios = () => {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography>{professional.nome}</Typography>
+                <Typography>{`Dr. ${professional.nome}`}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 { professional.disponibility.length === 0 ?
