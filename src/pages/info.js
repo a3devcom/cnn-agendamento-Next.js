@@ -13,7 +13,7 @@ const Info = () => {
   const { nome, sobrenome, birthdate, email, CPF, tel, sexo, isDisabled, setIsDisabled, setBirthdate } = useContext(Context);
 
   useEffect(() => {
-    const nameRegex = /^[A-Za-z]+$/;
+    const nameRegex = /^[A-Za-z\s]+$/;
     const emailRegex = /^\S+@\S+\.\S+$/;
     const cpfRegex = /^\d{11}$/;
     const telRegex = /^\d{10}$|^\d{11}$|^(\d{2})\s?(\d{4,5})-?(\d{4})$/;
