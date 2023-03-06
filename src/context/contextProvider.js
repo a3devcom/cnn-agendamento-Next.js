@@ -9,6 +9,15 @@ const ContextProvider = ({ children }) => {
   const [disponibility, setDisponibility] = useState([]);
   const [appointmentTime, setAppointmentTime] = useState('');
   const [chosenProfessional, setChosenProfessional] = useState(null);
+  // Estado do forms
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
+  const [birthdate, setBirthdate] = useState('');
+  const [email, setEmail] = useState('');
+  const [CPF, setCPF] = useState('');
+  const [tel, setTel] = useState('');
+  const [sexo, setSexo] = useState('female');
+  const [ isDisabled, setIsDisabled ] = useState(true);
 
   const contextValue = {
     typeSelect, 
@@ -24,7 +33,23 @@ const ContextProvider = ({ children }) => {
     appointmentTime, 
     setAppointmentTime, 
     chosenProfessional, 
-    setChosenProfessional
+    setChosenProfessional,
+    nome,
+    sobrenome,
+    birthdate,
+    email,
+    CPF,
+    tel,
+    sexo,
+    setNome,
+    setSobrenome,
+    setBirthdate,
+    setEmail,
+    setCPF,
+    setTel,
+    setSexo,
+    isDisabled, 
+    setIsDisabled
   };
 
   return (

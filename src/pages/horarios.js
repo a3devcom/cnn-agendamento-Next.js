@@ -14,6 +14,8 @@ import StepperCo from '@/components/StepperCO';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Head from 'next/head';
+import { Button } from "@mui/material";
+import Copyright from '@/components/Copyright';
 
 const Horarios = () => {
   const { 
@@ -70,11 +72,15 @@ const Horarios = () => {
     router.push('/info')
   };
 
+  const handleBack = () => {
+    router.push('/data');
+  };
+
   return(
     isLoading ? <div className="flex w-full h-screen justify-center items-center">
         <CircularProgress size='5rem'/>
       </div> : 
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 }} className="flex items-center justify-center h-screen">
+      <Container component="main" maxWidth="sm" sx={{ mb: 4, mt: 4, display: 'flex', flexDirection: 'column' }} className="flex items-center justify-center h-screen">
       <Head>
         <title>Clínica Frei Galvão</title>
       </Head>
@@ -120,8 +126,12 @@ const Horarios = () => {
             </Accordion>
           ))}
         </div>
+        <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+            Voltar
+        </Button>
       </div>
       </Paper>
+      <Copyright />
       </Container>
   );
 };

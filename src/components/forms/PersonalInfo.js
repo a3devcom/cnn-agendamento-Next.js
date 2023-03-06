@@ -3,18 +3,43 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
+import Context from '@/context';
+import { SendToMobileOutlined } from '@mui/icons-material';
 
 export default function PersonalInfo() {
-  const [gender, setGender] = useState('female');
-  
-  const handleGenderChange = (event) => {
-    setGender(event.target.value);
-  };
+  const { nome, setNome, sobrenome, setSobrenome, birthdate, setBirthdate, email, setEmail, CPF, setCPF, tel, setTel, sexo, setSexo} = useContext(Context);
+
+  const handleChange = ({ target }) => {
+    const { id, value } = target;
+    switch (id) {
+      case 'nome':
+          setNome(value);        
+        break;
+      case 'sobrenome':
+          setSobrenome(value);        
+      break;  
+      case 'birthdate':
+          setBirthdate(value);        
+        break;
+      case 'email':
+          setEmail(value);        
+      break;
+      case 'CPF':
+          setCPF(value);        
+      break;
+      case 'tel':
+          setTel(value);        
+        break;
+      default:
+        setSexo(value); 
+      break;
+    }
+  }
   
   return (
     <React.Fragment>
@@ -29,9 +54,11 @@ export default function PersonalInfo() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="firstName"
+            id="nome"
             name="firstName"
+            onChange={ handleChange }
             label="Nome"
+            value={ nome } 
             fullWidth
             autoComplete="given-name"
             variant="standard"
@@ -40,9 +67,11 @@ export default function PersonalInfo() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="lastName"
+            id="sobrenome"
             name="lastName"
             label="Sobrenome"
+            onChange={ handleChange }
+            value={ sobrenome } 
             fullWidth
             autoComplete="family-name"
             variant="standard"
@@ -51,10 +80,12 @@ export default function PersonalInfo() {
         <Grid item xs={12}>
           <TextField
             required
-            id="address2"
+            id="birthdate"
             name="address2"
+            onChange={ handleChange }
             label="Data de Nascimento"
             fullWidth
+            value={ birthdate } 
             variant="standard"
           />
         </Grid>
@@ -64,7 +95,9 @@ export default function PersonalInfo() {
             id="email"
             name="email"
             label="E-mail"
+            onChange={ handleChange }
             fullWidth
+            value={ email } 
             autoComplete="email"
             variant="standard"
           />
@@ -73,6 +106,9 @@ export default function PersonalInfo() {
           <TextField
             required
             label="CPF"
+            id="CPF"
+            value={ CPF }
+            onChange={ handleChange } 
             fullWidth
             variant="standard"
           />
@@ -82,7 +118,9 @@ export default function PersonalInfo() {
             required
             id="tel"
             name="tel"
+            value={ tel } 
             label="Telefone"
+            onChange={ handleChange }
             fullWidth
             autoComplete="tel"
             variant="standard"
@@ -93,10 +131,11 @@ export default function PersonalInfo() {
           <FormLabel component="legend">Sexo*</FormLabel>
           <RadioGroup
             required
+            id="sexo"
             aria-label="gender"
             name="gender"
-            value={gender}
-            onChange={handleGenderChange}
+            value={ sexo }
+            onChange={ handleChange } 
             row
           >
           <FormControlLabel value="male" control={<Radio />} label="Masculino" />
