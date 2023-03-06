@@ -9,7 +9,8 @@ import FormLabel from '@mui/material/FormLabel';
 import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import Context from '@/context';
-import { SendToMobileOutlined } from '@mui/icons-material';
+import { DatePicker } from '@mui/x-date-pickers';
+import dayjs from 'dayjs';
 
 export default function PersonalInfo() {
   const { nome, setNome, sobrenome, setSobrenome, birthdate, setBirthdate, email, setEmail, CPF, setCPF, tel, setTel, sexo, setSexo} = useContext(Context);
@@ -78,15 +79,12 @@ export default function PersonalInfo() {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
-            required
-            id="birthdate"
-            name="address2"
-            onChange={ handleChange }
+          <DatePicker
+            value={birthdate}
+            onChange={(date) => setBirthdate(dayjs(date).format('YYYY-MM-DD'))}
             label="Data de Nascimento"
-            fullWidth
-            value={ birthdate } 
-            variant="standard"
+            renderInput={(params) => <TextField {...params} fullWidth/>}
+            disableFuture
           />
         </Grid>
         <Grid item xs={12}>

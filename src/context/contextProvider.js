@@ -12,7 +12,7 @@ const ContextProvider = ({ children }) => {
   // Estado do forms
   const [nome, setNome] = useState('');
   const [sobrenome, setSobrenome] = useState('');
-  const [birthdate, setBirthdate] = useState('');
+  const [birthdate, setBirthdate] = useState();
   const [email, setEmail] = useState('');
   const [CPF, setCPF] = useState('');
   const [tel, setTel] = useState('');

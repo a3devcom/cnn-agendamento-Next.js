@@ -6,8 +6,32 @@ import StepperCO from '@/components/StepperCO';
 import { useRouter } from 'next/router';
 import NextBackButton from '@/components/NextBackButton';
 import Navbar from '@/components/Navbar';
+import { useContext, useEffect } from 'react';
+import Context from '@/context';
 
 const Info = () => {
+  const { nome, sobrenome, birthdate, email, CPF, tel, sexo, isDisabled, setIsDisabled, setBirthdate } = useContext(Context);
+
+  useEffect(() => {
+    const nameRegex = /^[A-Za-z]+$/;
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    const cpfRegex = /^\d{11}$/;
+    const telRegex = /^\d{10}$/;
+    const isValidNome = nameRegex.test(nome);
+    const isValidSobrenome = nameRegex.test(sobrenome);
+    const isValidBirthdate = birthdate && parseInt(birthdate.split('-')[0]) < new Date().getFullYear() && parseInt(birthdate.split('-')[0]) > new Date().getFullYear() - 125;
+    const isValidEmail = emailRegex.test(email);
+    const isValidCPF = cpfRegex.test(CPF);
+    const isValidTel = telRegex.test(tel);
+    const isValidSexo = Boolean(sexo);
+    console.log(isValidBirthdate);
+
+    const isAllValid = isValidNome && isValidSobrenome && isValidBirthdate && isValidEmail && isValidTel && isValidSexo && isValidCPF;
+
+    setIsDisabled(!isAllValid);
+
+  }, [nome, sobrenome, birthdate, email, CPF, tel, sexo]);
+  
   const router = useRouter();
 
   const handleClick = () => {
@@ -28,7 +52,7 @@ const Info = () => {
       <PaperContainer>
         <StepperCO  currentStep={4}/>
         <PersonalInfo />
-        <NextBackButton handleClick={ handleClick} handleBack={ handleBack }/>
+        <NextBackButton disabled={ isDisabled } handleClick={ handleClick} handleBack={ handleBack }/>
       </PaperContainer>
       <Copyright />
     </div>

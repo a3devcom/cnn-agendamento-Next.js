@@ -12,6 +12,7 @@ import Head from 'next/head';
 import Typography from '@mui/material/Typography';
 import Copyright from '@/components/Copyright';
 import PaperContainer from '../components/PaperContainer'
+import NextBackButton from '@/components/NextBackButton';
 
 const ProcedureSelection = () => {
   const { procedureSelect, setProcedureSelect, typeSelect } = useContext(Context);
@@ -74,22 +75,7 @@ const ProcedureSelection = () => {
           { typeSelect === 'Exame' && exames.map((exame) => <MenuItem key={exame} value={exame}>{exame}</MenuItem>)}      
           
         </TextField>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end',  marginTop: '2rem' }}>
-          <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-            Voltar
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handleClick}
-            sx={{ mt: 3, ml: 1, '&:hover': {
-              backgroundColor: '#48bbc1',
-              color: '#fff',
-            }, }}
-            disabled={procedureSelect === ''} 
-          >
-            Próximo
-          </Button>
-        </Box>
+        <NextBackButton disabled={procedureSelect === ''} handleClick={ handleClick } handleBack={ handleBack } />
       </Box>
     </Box>
     </PaperContainer>        
