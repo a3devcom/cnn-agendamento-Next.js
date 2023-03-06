@@ -39,7 +39,7 @@ export default function TypeSelection() {
       <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }} >
       <Box 
       className="flex flex-col items-center justify-center "
-    >
+      >
         <StepperCO
         currentStep={0}
         />

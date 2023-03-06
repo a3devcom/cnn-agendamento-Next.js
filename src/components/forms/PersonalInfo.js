@@ -50,42 +50,41 @@ export default function PersonalInfo() {
         </Grid>
         <Grid item xs={12}>
           <TextField
+            required
             id="address2"
             name="address2"
-            label="Data de Nascimento*"
+            label="Data de Nascimento"
             fullWidth
-            autoComplete="shipping address-line2"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
             required
-            id="address1"
-            name="address1"
+            id="email"
+            name="email"
             label="E-mail"
             fullWidth
-            autoComplete="shipping address-line1"
+            autoComplete="email"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="address2"
-            name="address2"
-            label="CPF*"
+            required
+            label="CPF"
             fullWidth
-            autoComplete="shipping address-line2"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="address2"
-            name="address2"
-            label="Telefone*"
+            required
+            id="tel"
+            name="tel"
+            label="Telefone"
             fullWidth
-            autoComplete="shipping address-line2"
+            autoComplete="tel"
             variant="standard"
           />
         </Grid>
@@ -93,6 +92,7 @@ export default function PersonalInfo() {
         <FormControl component="fieldset" fullWidth>
           <FormLabel component="legend">Sexo*</FormLabel>
           <RadioGroup
+            required
             aria-label="gender"
             name="gender"
             value={gender}

@@ -15,6 +15,7 @@ import Navbar from '../Navbar';
 import PrintIcon from '@mui/icons-material/Print';
 import HomeIcon from '@mui/icons-material/Home';
 import router from 'next/router';
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 
 function Copyright() {
   return (
@@ -94,10 +95,11 @@ export default function Checkout() {
               <Typography variant="h6"  className='mt-5 font-medium'>
                 Informações do agendamento 12548549
               </Typography>
+              
               <Typography variant="subtitle1">
                 icon Oftalmologia
                 <br/>
-                icon Dr.Flavio David Hirtsch
+                <MedicalInformationIcon fontSize='small'/> Dr.Flavio David Hirtsch
                 <br/>
                 icon Sexta-feira, 29/03/2023, a partir das 14:00
                 <br/>
@@ -166,7 +168,10 @@ export default function Checkout() {
                 <Button
                   variant="contained"
                   onClick={handleNext}
-                  sx={{ mt: 3, ml: 1 }}
+                  sx={{ mt: 3, ml: 1,'&:hover': {
+                    backgroundColor: '#48bbc1',
+                    color: '#fff',
+                  }, }}
                 >
                   {activeStep === steps.length - 1 ? 'Confirmar' : 'Próximo'}
                 </Button>

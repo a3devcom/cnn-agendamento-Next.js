@@ -1,7 +1,5 @@
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
-import { useContext } from 'react';
-import Context from '@/context';
 import StepLabel from '@mui/material/StepLabel';
 
 const StepperCO = ({currentStep}) => {
