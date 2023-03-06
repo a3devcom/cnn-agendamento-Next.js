@@ -16,7 +16,7 @@ const NextBackButton = ({ handleClick, handleBack, disabled, isConcludeButton}) 
           color: '#fff',
         }, }}
       >
-        {isConcludeButton ? 'Confirmar' : 'Próximo'}
+        {isConcludeButton ? 'Confirmar Agendamento' : 'Próximo'}
       </Button>
     </Box>
   );

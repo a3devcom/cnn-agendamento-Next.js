@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Copyright from "@/components/Copyright";
 import NextBackButton from "@/components/NextBackButton";
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import Box from '@mui/material/Box';
 
 const Confirmar = () => {
   const router = useRouter();
@@ -18,6 +20,9 @@ const Confirmar = () => {
 
   return (
     <>
+      <Head>
+        <title>Clínica Frei Galvão</title>
+      </Head>
       <Navbar />
       <PaperContainer>
         <Review />
