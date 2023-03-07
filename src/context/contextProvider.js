@@ -18,6 +18,12 @@ const ContextProvider = ({ children }) => {
   const [tel, setTel] = useState('');
   const [sexo, setSexo] = useState('female');
   const [ isDisabled, setIsDisabled ] = useState(true);
+  // Estado do healthcare
+  const [convenios, setConvenios] = useState([]);
+  const [pagamento, setPagamento] = useState('');
+  const [convenio, setConvenio] = useState('');
+  // Estado da confirmação
+  const [nomeConvenio, setNomeConvenio] = useState('');
 
   const contextValue = {
     typeSelect, 
@@ -49,7 +55,15 @@ const ContextProvider = ({ children }) => {
     setTel,
     setSexo,
     isDisabled, 
-    setIsDisabled
+    setIsDisabled, 
+    convenios, 
+    setConvenios,
+    pagamento,
+    setPagamento,
+    convenio,
+    setConvenio,
+    setNomeConvenio,
+    nomeConvenio
   };
 
   return (

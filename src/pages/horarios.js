@@ -1,7 +1,6 @@
 import { useEffect, useContext, useState } from "react";
 import Context from "@/context";
 import { useRouter } from 'next/router';
-import CircularProgress from '@mui/material/CircularProgress';
 import axios from "axios";
 import dayjs from 'dayjs';
 import Accordion from '@mui/material/Accordion';
@@ -11,12 +10,11 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Chip from '@mui/material/Chip';
 import StepperCo from '@/components/StepperCO';
-import Container from '@mui/material/Container';
-import Paper from '@mui/material/Paper';
 import Head from 'next/head';
 import { Button } from "@mui/material";
 import Copyright from '@/components/Copyright';
 import PaperContainer from '../components/PaperContainer'
+import Loading from "@/components/Loading";
 
 const Horarios = () => {
   const { 
@@ -78,9 +76,7 @@ const Horarios = () => {
   };
 
   return(
-    isLoading ? <div className="flex w-full h-screen justify-center items-center">
-        <CircularProgress size='5rem'/>
-      </div> : 
+    isLoading ? <Loading /> : 
       <>
       <Head>
         <title>Clínica Frei Galvão</title>
