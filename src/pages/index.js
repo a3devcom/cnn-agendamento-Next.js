@@ -56,7 +56,7 @@ export default function TypeSelection() {
             onChange={ handleChange }
           >
             <MenuItem value='Consulta'>Consulta</MenuItem>
-            <MenuItem value='Cirurgia'>Cirurgia</MenuItem>
+            {/* <MenuItem value='Cirurgia'>Cirurgia</MenuItem> */}
             <MenuItem value='Exame'>Exame</MenuItem>
           </TextField>
           <Button 
