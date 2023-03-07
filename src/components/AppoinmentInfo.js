@@ -11,16 +11,21 @@ import Context from '@/context';
 import dayjs from 'dayjs';
 import axios from 'axios';
 import Loading from './Loading';
+import { useRouter } from 'next/router';
 
 export default function AppoinmentInfo() {
   const { chosenProfessional, selectedDate, appointmentTime, pagamento, setNomeConvenio, nomeConvenio  } = useContext(Context);
+
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getInsurance = async () => {
-      console.log(pagamento)
-      if(pagamento !== 'Particular') {
+      if(pagamento === '' || chosenProfessional === null || selectedDate === undefined) {
+        router.push('/');
+      }
+      if(pagamento !== 'Particular' && pagamento !== '') {
         const response = await axios.get(`/api/getInsuranceById?id=${pagamento.toString()}`);
   
         setNomeConvenio(response.data.nome);
