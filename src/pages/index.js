@@ -12,7 +12,7 @@ import Copyright from '@/components/Copyright';
 import PaperContainer from '../components/PaperContainer'
 
 export default function TypeSelection() {
-  const { typeSelect, setTypeSelect } = useContext(Context);
+  const { typeSelect, setTypeSelect, setProcedureSelect } = useContext(Context);
   const router = useRouter();
 
   const handleChange = ({ target }) => {
@@ -22,6 +22,7 @@ export default function TypeSelection() {
 
   const handleClick = () => {
     if (typeSelect === 'Consulta') {
+      setProcedureSelect(483902);
       router.push('/data');
 
     } else {

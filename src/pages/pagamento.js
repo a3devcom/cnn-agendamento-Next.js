@@ -7,11 +7,13 @@ import NextBackButton from "@/components/NextBackButton";
 import { useRouter } from 'next/router';
 import { useState, useContext, useEffect } from "react";
 import Context from "@/context";
+import axios from "axios";
+import dayjs from "dayjs";
 
 const Pagamento = () => {
   const router = useRouter();
   const [isDisabled, setIsDisabled] = useState(true);
-  const { pagamento } = useContext(Context);
+  const { pagamento, convenio, selectedDate, appointmentTime, procedureSelect } = useContext(Context);
 
   useEffect(() => {
     if(pagamento !== '') {
@@ -20,6 +22,18 @@ const Pagamento = () => {
       setIsDisabled(true);
     }
   }, [pagamento]);
+
+  useEffect(() => {
+    const isConvenioValid = async () => {
+      const response = await axios.get(`/api/getPrice?data=${dayjs(selectedDate).format('YYYY-MM-DD')}&hora=${appointmentTime}&idConvenio=${convenio}&idProcedimento=${procedureSelect}`);
+
+      console.log(response.data);
+    };
+
+    if(pagamento !== 'Particular' && pagamento !== '') {
+      isConvenioValid();
+    }
+  }, [convenio]);
 
   const handleClick = () => {
     router.push('/confirmar');

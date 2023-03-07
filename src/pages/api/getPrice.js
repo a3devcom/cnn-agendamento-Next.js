@@ -12,10 +12,10 @@ export default async function handler(req, res) {
     };
 
     
-      const response = await axios.get("https://api.clinicanasnuvens.com.br/tipo-procedimento/valores-venda?dataBase=2023-03-07&horaBase=09%3A15%3A00&idTipoConvenio=35487&idTipoProcedimento=495224", config);
+      const response = await axios.get(`https://api.clinicanasnuvens.com.br/tipo-procedimento/valores-venda?dataBase=${data}&horaBase=${hora}&idTipoConvenio=${idConvenio}&idTipoProcedimento=${idProcedimento}`, config);
 
 
-      return res.status(200).json(response);    
+      return res.status(200).json(response.data);    
   } catch (error) {
     console.log(error);
 
