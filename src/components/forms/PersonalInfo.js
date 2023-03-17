@@ -136,9 +136,8 @@ export default function PersonalInfo() {
             onChange={ handleChange } 
             row
           >
-          <FormControlLabel value="male" control={<Radio />} label="Masculino" />
-          <FormControlLabel value="female" control={<Radio />} label="Feminino" />
-          <FormControlLabel value="other" control={<Radio />} label="Outro" />
+          <FormControlLabel value="MASCULINO" control={<Radio />} label="Masculino" />
+          <FormControlLabel value="FEMININO" control={<Radio />} label="Feminino" />
           </RadioGroup>
         </FormControl>
         </Grid>

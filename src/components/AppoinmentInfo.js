@@ -71,12 +71,17 @@ export default function AppoinmentInfo() {
                   Rua Sete de Setembro, 198 - Centro - CEP 12500-330 - Guaratinguetá - SP
                 </Typography>
               </div>
-              <div className='flex flex-row items-center mb-3'>
-                <PaidIcon fontSize='small' className='mr-2'/>
-                <Typography variant="subtitle1">
-                  R$ 230,00
-                </Typography>
-              </div>
+              
+                { pagamento === 'Particular' && (
+                  <div className='flex flex-row items-center mb-3'>
+                    <PaidIcon fontSize='small' className='mr-2'/>
+                    <Typography variant="subtitle1">
+                      R$ 230,00
+                    </Typography>
+                  </div>
+                ) }
+                
+              
               { pagamento !== 'Particular' && (
                 <div className='flex flex-row items-center'>
                   <LocalHospitalIcon fontSize='small' className='mr-2'/>

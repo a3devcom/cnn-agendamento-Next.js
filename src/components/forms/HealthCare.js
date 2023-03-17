@@ -62,14 +62,14 @@ export default function HealthCare() {
             <Grid item xs={12} md="auto" justifyContent="center" alignItems="center">
               <div onClick={ handleClick } className='mt-10 p-5 flex flex-row items-center w-52 border-2 solid rounded-lg hover:border-main-400 focus:border-main-400'>
                 <AccountBalanceWalletIcon fontSize="large" color="primary" />
-                <div className='flex flex-col pl-2 justify-center'>
+                <button className='flex flex-col pl-2 justify-center'>
                   <Typography variant="body1" sx={{ fontWeight: 'bold'}}>
                     Particular
                   </Typography>
                   <Typography variant="body2" sx={{ fontWeight: 'light'}}>
                     Com pagamento no local
                   </Typography>
-                </div>
+                </button>
               </div>
             </Grid>
             <Grid item xs={12} md="auto">
