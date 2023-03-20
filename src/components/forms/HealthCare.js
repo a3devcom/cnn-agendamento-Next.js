@@ -32,6 +32,7 @@ export default function HealthCare() {
 
   const handleClick = () => {
     setPagamento('Particular');
+    setConvenio(33934);
   };
 
   const handleChange = ({ target }) => {
