@@ -12,7 +12,7 @@ import dayjs from "dayjs";
 
 const Confirmar = () => {
   const router = useRouter();
-  const { CPF, nome, sobrenome, email, tel, sexo, birthdate, selectedDate, chosenProfessional, appointmentTime, convenio, idPatient, idHealthCare, endTime } = useContext(Context);  
+  const { email, tel, selectedDate, chosenProfessional, appointmentTime, idPatient, idHealthCare, endTime } = useContext(Context);  
 
   const checkDisponibility = async () => {
     const response = await axios.get(`/api/getDisponibility/?id=${chosenProfessional.id}&date=${dayjs(selectedDate).format('YYYY-MM-DD')}`);
@@ -27,9 +27,9 @@ const Confirmar = () => {
   const completeAppointment = async () => {
     let localAgenda = 0;
 
-    if(chosenProfessional.id === 44017) {
+    if(Number(chosenProfessional.id) === 44017) {
       localAgenda = 25355;
-    } else if(chosenProfessional.id === 43997) {
+    } else if(Number(chosenProfessional.id) === 43997) {
       localAgenda = 25361
     } else {
       localAgenda = 27754

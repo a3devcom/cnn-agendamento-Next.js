@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 const Pagamento = () => {
   const router = useRouter();
   const [isDisabled, setIsDisabled] = useState(true);
-  const { pagamento, convenio, selectedDate, appointmentTime, procedureSelect, setIdHealthCare, idPatient } = useContext(Context);
+  const { pagamento, convenio, setIdHealthCare, idPatient } = useContext(Context);
 
   useEffect(() => {
     if(pagamento !== '') {
@@ -22,18 +22,6 @@ const Pagamento = () => {
       setIsDisabled(true);
     }
   }, [pagamento]);
-
-  // useEffect(() => {
-  //   const isConvenioValid = async () => {
-  //     const response = await axios.get(`/api/getPrice?data=${dayjs(selectedDate).format('YYYY-MM-DD')}&hora=${appointmentTime}&idConvenio=${convenio}&idProcedimento=${procedureSelect}`);
-
-  //     console.log(response.data);
-  //   };
-
-  //   if(pagamento !== 'Particular' && pagamento !== '') {
-  //     isConvenioValid();
-  //   }
-  // }, [convenio]);
 
   const associatePatient = async () => {
     const response = await axios.post(`/api/postAssociatePatient?idPaciente=${idPatient}&idTipoConvenio=${convenio}`);
