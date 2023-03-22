@@ -11,7 +11,7 @@ const StepperCO = ({currentStep}) => {
     <div className='w-full'>
       <Stepper 
         activeStep={currentStep}
-        orientation={isMobile ? 'horizontal' : 'horizontal'} sx={{ maxWidth: '800px', margin: '0 auto' }}
+        orientation={isMobile ? 'vertical' : 'horizontal'} sx={{ maxWidth: '800px', margin: '0 auto' }}
       >
         <Step>
           <StepLabel>Agendamento</StepLabel>
