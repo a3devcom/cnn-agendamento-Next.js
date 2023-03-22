@@ -6,6 +6,7 @@ const ContextProvider = ({ children }) => {
   const [professionals, setProfessionals] = useState([]);
   const [disponibility, setDisponibility] = useState([]);
   const [appointmentTime, setAppointmentTime] = useState('');
+  const [endTime, setEndTime] = useState('');
   const [chosenProfessional, setChosenProfessional] = useState(null);
   // Estado do forms
   const [nome, setNome] = useState('');
@@ -16,10 +17,12 @@ const ContextProvider = ({ children }) => {
   const [tel, setTel] = useState('');
   const [sexo, setSexo] = useState('');
   const [ isDisabled, setIsDisabled ] = useState(true);
+  const [idPatient, setIdPatient] = useState();
   // Estado do healthcare
   const [convenios, setConvenios] = useState([]);
   const [pagamento, setPagamento] = useState('');
   const [convenio, setConvenio] = useState('');
+  const [idHealthCare, setIdHealthCare] = useState();
   // Estado da confirmação
   const [nomeConvenio, setNomeConvenio] = useState('');
 
@@ -57,7 +60,13 @@ const ContextProvider = ({ children }) => {
     convenio,
     setConvenio,
     setNomeConvenio,
-    nomeConvenio
+    nomeConvenio,
+    idPatient,
+    setIdPatient,
+    idHealthCare,
+    setIdHealthCare,
+    endTime, 
+    setEndTime
   };
 
   return (

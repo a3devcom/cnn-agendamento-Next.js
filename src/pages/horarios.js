@@ -25,6 +25,7 @@ const Horarios = () => {
     setDisponibility, 
     setAppointmentTime,
     setChosenProfessional,
+    setEndTime
   } = useContext(Context);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -63,10 +64,14 @@ const Horarios = () => {
   }, [professionals]);
 
   const handleClick = (event) => {
-    const { name, pid, hour } = event.currentTarget.attributes;
+    const { name, pid, hour, end } = event.currentTarget.attributes;
   
     setAppointmentTime(hour.value);
-    setChosenProfessional({ nome: name.value, id: pid.value });
+    setEndTime(end.value);
+
+    const idPessoa = professionals.filter((professional) => professional.id === Number(pid.value))[0].idpessoa;
+
+    setChosenProfessional({ nome: name.value, id: pid.value, idPessoa });
 
     router.push('/info')
   };
@@ -114,6 +119,7 @@ const Horarios = () => {
                     name={professional.nome}
                     pid={professional.id}
                     hour={horario.horaInicio}
+                    end={horario.horaFim}
                     onClick={handleClick}
                     sx={{ marginRight: '0.5rem', marginTop: '0.5rem'}}
                     color="primary" 

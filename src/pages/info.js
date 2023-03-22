@@ -8,9 +8,10 @@ import NextBackButton from '@/components/NextBackButton';
 import Navbar from '@/components/Navbar';
 import { useContext, useEffect } from 'react';
 import Context from '@/context';
+import axios from 'axios';
 
 const Info = () => {
-  const { nome, sobrenome, birthdate, email, CPF, tel, sexo, isDisabled, setIsDisabled, setBirthdate } = useContext(Context);
+  const { nome, sobrenome, birthdate, email, CPF, tel, sexo, isDisabled, setIsDisabled, setBirthdate, setIdPatient } = useContext(Context);
 
   useEffect(() => {
     const nameRegex = /^[A-Za-z\s]+$/;
@@ -33,7 +34,25 @@ const Info = () => {
   
   const router = useRouter();
 
-  const handleClick = () => {
+  const setPatientId = async () => {
+    const response = await axios.get(`/api/getPatient?cpf=${CPF}`);
+
+    const { data } = response;
+    
+    if(data === '') {
+      const newPatientId = await axios.get(`/api/postNewPatient?email=${email}&telefone=${tel}&cpf=${CPF}&dataNasc=${dayjs(birthdate).format('YYYY-MM-DD')}&genero=${sexo}&nome=${nome + sobrenome}`);
+
+      setIdPatient(newPatientId.data.id);
+      console.log(`Novo paciente criado com id: ${newPatientId.data.id}`)
+    } else {
+      setIdPatient(data.id);
+      console.log(`Paciente existente encontrado com id: ${data.id}`)
+    }
+  };
+
+  const handleClick = async () => {
+    await setPatientId();
+
     router.push('/pagamento');
   }
 

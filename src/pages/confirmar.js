@@ -12,24 +12,7 @@ import dayjs from "dayjs";
 
 const Confirmar = () => {
   const router = useRouter();
-  const { CPF, nome, sobrenome, email, tel, sexo, birthdate, selectedDate, chosenProfessional, appointmentTime } = useContext(Context);
-  const [idPatient, setIdPatient] = useState();
-
-  const setPatientId = async () => {
-    const response = await axios.get(`/api/getPatient?cpf=${CPF}`);
-
-    const { data } = response;
-    
-    if(data === '') {
-      const newPatientId = await axios.get(`/api/postNewPatient?email=${email}&telefone=${tel}&cpf=${CPF}&dataNasc=${dayjs(birthdate).format('YYYY-MM-DD')}&genero=${sexo}&nome=${nome + sobrenome}`);
-
-      setIdPatient(newPatientId.data.id);
-      console.log(`Novo paciente criado com id: ${newPatientId.data.id}`)
-    } else {
-      setIdPatient(data.id);
-      console.log(`Paciente existente encontrado com id: ${data.id}`)
-    }
-  };
+  const { CPF, nome, sobrenome, email, tel, sexo, birthdate, selectedDate, chosenProfessional, appointmentTime, convenio, idPatient, idHealthCare, endTime } = useContext(Context);  
 
   const checkDisponibility = async () => {
     const response = await axios.get(`/api/getDisponibility/?id=${chosenProfessional.id}&date=${dayjs(selectedDate).format('YYYY-MM-DD')}`);
@@ -41,12 +24,26 @@ const Confirmar = () => {
     }
   };
 
+  const completeAppointment = async () => {
+    let localAgenda = 0;
+
+    if(chosenProfessional.id === 44017) {
+      localAgenda = 25355;
+    } else if(chosenProfessional.id === 43997) {
+      localAgenda = 25361
+    } else {
+      localAgenda = 27754
+    }
+
+    const response = await axios.post(`/api/postNewAppointment?data=${dayjs(selectedDate).format('YYYY-MM-DD')}&emailPaciente=${email}&horaFim=${endTime}&horaInicio=${appointmentTime}&idLocalAgenda=${localAgenda}&idPaciente=${idPatient}&idPacienteConvenio=${idHealthCare}&idPessoaExecutor=${chosenProfessional.idPessoa}&telefoneCelularPaciente=${tel}`);
+
+    console.log(response.data);
+  };
+
   const handleClick = async () => {   
     
-    await setPatientId();
     await checkDisponibility();
-    
-    
+    await completeAppointment();
 
     router.push('/obrigado');
   };
