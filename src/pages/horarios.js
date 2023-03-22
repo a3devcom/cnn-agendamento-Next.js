@@ -84,7 +84,7 @@ const Horarios = () => {
       <PaperContainer>
       <div className="flex flex-col w-full justify-center items-center">
         <StepperCo
-          currentStep={3}
+          currentStep={1}
         />
         <div className="flex flex-col w-3/4 justify-center items-center">
         <Typography

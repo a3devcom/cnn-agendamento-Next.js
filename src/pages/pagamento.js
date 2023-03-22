@@ -47,7 +47,7 @@ const Pagamento = () => {
     <>
       <Navbar />
       <PaperContainer>
-        <StepperCO currentStep={4}/>
+        <StepperCO currentStep={2}/>
         <HealthCare />
         <NextBackButton disabled={isDisabled} handleBack={ handleBack } handleClick={ handleClick }/>
       </PaperContainer>

@@ -2,8 +2,6 @@ import Context from ".";
 import { useState } from "react";
 
 const ContextProvider = ({ children }) => {
-  const [typeSelect, setTypeSelect] = useState('');
-  const [procedureSelect, setProcedureSelect] = useState('');
   const [selectedDate, setSelectedDate] = useState();
   const [professionals, setProfessionals] = useState([]);
   const [disponibility, setDisponibility] = useState([]);
@@ -26,10 +24,6 @@ const ContextProvider = ({ children }) => {
   const [nomeConvenio, setNomeConvenio] = useState('');
 
   const contextValue = {
-    typeSelect, 
-    setTypeSelect,
-    procedureSelect,
-    setProcedureSelect,
     selectedDate,
     setSelectedDate,
     setProfessionals,

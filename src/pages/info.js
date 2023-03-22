@@ -49,7 +49,7 @@ const Info = () => {
       </Head>
       <Navbar />
       <PaperContainer>
-        <StepperCO  currentStep={4}/>
+        <StepperCO  currentStep={2}/>
         <PersonalInfo />
         <NextBackButton disabled={ isDisabled } handleClick={ handleClick} handleBack={ handleBack }/>
       </PaperContainer>
