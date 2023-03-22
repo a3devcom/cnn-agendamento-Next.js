@@ -24,8 +24,10 @@ const Confirmar = () => {
       const newPatientId = await axios.get(`/api/postNewPatient?email=${email}&telefone=${tel}&cpf=${CPF}&dataNasc=${dayjs(birthdate).format('YYYY-MM-DD')}&genero=${sexo}&nome=${nome + sobrenome}`);
 
       setIdPatient(newPatientId.data.id);
+      console.log(`Novo paciente criado com id: ${newPatientId.data.id}`)
     } else {
       setIdPatient(data.id);
+      console.log(`Paciente existente encontrado com id: ${data.id}`)
     }
   };
 
