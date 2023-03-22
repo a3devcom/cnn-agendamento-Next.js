@@ -14,7 +14,7 @@ import { Button } from '@mui/material';
 
 const DateSelection = () => {
   const router = useRouter();  
-  const { selectedDate, setSelectedDate, typeSelect } = useContext(Context);
+  const { selectedDate, setSelectedDate } = useContext(Context);
 
   useEffect(() => {
     setSelectedDate(dayjs());
