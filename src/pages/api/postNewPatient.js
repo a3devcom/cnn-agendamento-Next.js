@@ -1,17 +1,11 @@
 import axios from "axios";
 import dayjs from "dayjs";
+import config from "@/config/apiConfig";
 
 export default async function handler(req, res) {
   const { email, telefone, cpf, dataNasc, genero, nome } = req.query;
 
   try {
-    const config = {
-      headers: {
-        Authorization: `Basic ${btoa('apiCnn:7eb16006265aa53516b1159503cc26eb738529d3448091416aba7c7784e5f681')}`,
-        'clinicaNasNuvens-cid': '035ae979d091677ebc66e4ca780d894d' 
-      }
-    };
-
     const response = await axios.post("https://api.clinicanasnuvens.com.br/paciente/novo", {
       "contato": {
         "email": email,
