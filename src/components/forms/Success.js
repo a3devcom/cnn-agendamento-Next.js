@@ -26,7 +26,7 @@ const Success = () => {
       </Typography>
       <Box className=" pt-1 pb-5 pl-5 pr-5 border-2 solid rounded-lg">
         <Typography variant="h6"  className='mt-5 font-medium'>
-          Informações do agendamento 12548549
+          Informações do agendamento:
         </Typography>   
           <AppoinmentInfo/>
           </Box>
