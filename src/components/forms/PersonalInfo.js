@@ -15,32 +15,88 @@ import dayjs from 'dayjs';
 export default function PersonalInfo() {
   const { nome, setNome, sobrenome, setSobrenome, birthdate, setBirthdate, email, setEmail, CPF, setCPF, tel, setTel, sexo, setSexo} = useContext(Context);
 
+  const yesterday = dayjs().subtract(18, 'year');
+
+  const [isNomeValid, setIsNomeValid] = useState(false);
+  const [isSobrenomeValid, setIsSobrenomeValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(false);
+  const [isCPFValid, setIsCPFValid] = useState(false);
+  const [isTelValid, setIsTelValid] = useState(false);
+  const [isSexoValid, setIsSexoValid] = useState(true);
+
   const handleChange = ({ target }) => {
     const { id, value } = target;
+
     switch (id) {
       case 'nome':
-          setNome(value);        
+          setNome(value);
         break;
       case 'sobrenome':
-          setSobrenome(value);        
+          setSobrenome(value);    
       break;  
       case 'birthdate':
-          setBirthdate(value);        
+          setBirthdate(value);
         break;
       case 'email':
-          setEmail(value);        
+          setEmail(value);
       break;
       case 'CPF':
-          setCPF(value);        
+          setCPF(value);
       break;
       case 'tel':
-          setTel(value);        
+          setTel(value);          
         break;
       default:
-        setSexo(value); 
+        setSexo(value);        
       break;
     }
   }
+
+  useEffect(() => {
+    const nameRegex = /^[A-Za-z\s]+$/;
+
+    const isValidNome = nameRegex.test(nome);
+
+    setIsNomeValid(isValidNome);
+  }, [nome]);
+
+  useEffect(() => {
+    const nameRegex = /^[A-Za-z\s]+$/;
+
+    const isValidSobrenome = nameRegex.test(sobrenome);
+
+    setIsSobrenomeValid(isValidSobrenome);
+  }, [sobrenome]);
+
+  useEffect(() => {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+
+    const isValidEmail = emailRegex.test(email);
+
+    setIsEmailValid(isValidEmail);
+  }, [email]);
+
+  useEffect(() => {
+    const cpfRegex = /^\d{11}$/;
+
+    const isValidCPF = cpfRegex.test(CPF);
+
+    setIsCPFValid(!isValidCPF);
+  }, [CPF]);
+
+  useEffect(() => {
+    const telRegex = /^\d{10}$|^\d{11}$|^(\d{2})\s?(\d{4,5})-?(\d{4})$/;
+
+    const isValidTel = telRegex.test(tel);
+
+    setIsTelValid(isValidTel);
+  }, [tel]);
+
+  useEffect(() => {
+    const isValidSexo = sexo !== '';
+
+    setIsSexoValid(isValidSexo);
+  }, [sexo]);
   
   return (
     <React.Fragment>
@@ -63,6 +119,7 @@ export default function PersonalInfo() {
             fullWidth
             autoComplete="given-name"
             variant="standard"
+            error={!isNomeValid}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -76,6 +133,7 @@ export default function PersonalInfo() {
             fullWidth
             autoComplete="family-name"
             variant="standard"
+            error={!isSobrenomeValid}
           />
         </Grid>
         <Grid item xs={12}>
@@ -85,6 +143,7 @@ export default function PersonalInfo() {
             label="Data de Nascimento"
             renderInput={(params) => <TextField {...params} fullWidth/>}
             disableFuture
+            maxDate={yesterday}
           />
         </Grid>
         <Grid item xs={12}>
@@ -98,6 +157,7 @@ export default function PersonalInfo() {
             value={ email } 
             autoComplete="email"
             variant="standard"
+            error={!isEmailValid}
           />
         </Grid>
         <Grid item xs={12}>
@@ -109,6 +169,7 @@ export default function PersonalInfo() {
             onChange={ handleChange } 
             fullWidth
             variant="standard"
+            error={isCPFValid}
           />
         </Grid>
         <Grid item xs={12}>
@@ -122,11 +183,12 @@ export default function PersonalInfo() {
             fullWidth
             autoComplete="tel"
             variant="standard"
+            error={!isTelValid}
           />
         </Grid>
         <Grid item xs={12}>
         <FormControl component="fieldset" fullWidth>
-          <FormLabel component="legend">Sexo*</FormLabel>
+          <FormLabel error={!isSexoValid} component="legend">Sexo*</FormLabel>
           <RadioGroup
             required
             id="sexo"
@@ -135,6 +197,7 @@ export default function PersonalInfo() {
             value={ sexo }
             onChange={ handleChange } 
             row
+            
           >
           <FormControlLabel value="MASCULINO" control={<Radio />} label="Masculino" />
           <FormControlLabel value="FEMININO" control={<Radio />} label="Feminino" />

@@ -16,7 +16,7 @@ const ContextProvider = ({ children }) => {
   const [email, setEmail] = useState('');
   const [CPF, setCPF] = useState('');
   const [tel, setTel] = useState('');
-  const [sexo, setSexo] = useState('female');
+  const [sexo, setSexo] = useState('');
   const [ isDisabled, setIsDisabled ] = useState(true);
   // Estado do healthcare
   const [convenios, setConvenios] = useState([]);
